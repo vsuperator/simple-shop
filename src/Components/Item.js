@@ -26,12 +26,13 @@ var Item = React.createClass({
 
     handleChange(e){
         this.setState({
-            quantity: e.target.value
+            quantity: +e.target.value
         });
     },
 
     render() {
         var product = this.props.product;
+        console.log(product.quantity);
         return (
             <li className="product-item">
                 <p>Галерея</p>
@@ -41,7 +42,8 @@ var Item = React.createClass({
                     <input type="number" value={this.state.quantity}
                         min="0" max={product.quantity} onChange={this.handleChange}/>
                     <span>{product.price}</span>
-                    <button onClick={this.addTobasket}>Add to basket</button>
+                    <button className={product.quantity == 0 ? 'disable' : null}
+                        onClick={this.addTobasket}>Add to basket</button>
                 </div>
             </li>
         );

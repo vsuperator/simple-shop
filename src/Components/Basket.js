@@ -12,7 +12,7 @@ require('../css/product-item.css');
 
 var Basket = React.createClass({
     mixins: [
-        Reflux.connect(basketStore, 'basketItems')
+        Reflux.listenTo(basketStore, 'onBasketItemsReceived')
     ],
 
     propTypes: {
@@ -21,8 +21,16 @@ var Basket = React.createClass({
 
     getInitialState(){
         return {
-            basketItems: null
+            basketItems: null,
+            price: null
         }
+    },
+
+    onBasketItemsReceived(data){
+        this.setState({
+            basketItems: data.items,
+            price: data.price
+        });
     },
 
     getItems(){
@@ -38,6 +46,7 @@ var Basket = React.createClass({
                 <ul>
                     {this.getItems()}
                 </ul>
+                <p>{this.state.price}</p>
             </div>
         );
     }

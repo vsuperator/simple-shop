@@ -12,6 +12,12 @@ var basketStore = Reflux.createStore({
         this.items = [];
     },
 
+    getPrice(){
+        return this.items.reduce(function(sum, current) {
+            return sum + (current.price * current.quantity);
+        }, 0);
+    },
+
     addItem(item, quantity){
         var currentItem = _.find(this.items, {id: item.id});
         if(!_.isUndefined(currentItem)){
@@ -20,10 +26,10 @@ var basketStore = Reflux.createStore({
             this.items.push(_.extend(item, {quantity: quantity}))
         }
 
-        // Если мы находим ттекщий item то увеличиваем количество на
-        //console.log(item);
-        //this.items.push(item);
-        this.trigger(this.items)
+        this.trigger({
+            items: this.items,
+            price: this.getPrice()
+        })
     }
 });
 

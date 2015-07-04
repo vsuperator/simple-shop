@@ -22,6 +22,7 @@ var productsStore = Reflux.createStore({
     changeQuantity(id, quantity){
         var currentItem = _.find(this.products, {id: id});
         currentItem.quantity = currentItem.quantity - quantity;
+        console.log(currentItem.quantity);
         this.productsReceived(this.products);
     },
 
