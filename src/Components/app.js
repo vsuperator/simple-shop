@@ -25,8 +25,8 @@ var App = React.createClass({
         productsActions.loadListOfProducts();
     },
 
-    sortByCategory(value){
-        console.log(value);
+    sortByCategory(id){
+        productsActions.setCategory(id);
     },
 
     getCategories(){

@@ -5,13 +5,15 @@ var _  = require('underscore');
 
 var actions = Reflux.createActions([
     "loadListOfProducts",
-    "changeQuantity"
+    "changeQuantity",
+    "setCategory"
 ]);
 
 var productsStore = Reflux.createStore({
     init() {
         this.listenToMany(actions);
-        this.products = null;
+        this.allProducts = null;
+        this.category = null;
     },
 
     loadListOfProducts() {
@@ -19,16 +21,24 @@ var productsStore = Reflux.createStore({
             .done(response => this.productsReceived(response.products));
     },
 
+    setCategory(id){
+        this.category = id;
+        this.productsReceived(this.allProducts);
+    },
+
     changeQuantity(id, quantity){
-        var currentItem = _.find(this.products, {id: id});
+        var currentItem = _.find(this.allProducts, {id: id});
         currentItem.quantity = currentItem.quantity - quantity;
-        console.log(currentItem.quantity);
-        this.productsReceived(this.products);
+        this.productsReceived(this.allProducts);
     },
 
     productsReceived(data){
-        this.products = _.clone(data);
-        this.trigger(this.products);
+        this.allProducts = _.clone(data);
+        if(!_.isNull(this.category)){
+            this.trigger(_.where(this.allProducts, {category_id: this.category}));
+            return
+        }
+        this.trigger(this.allProducts);
     }
 });
 
