@@ -1,6 +1,8 @@
 'use strict';
 
 var React = require('react');
+
+var {basketStore, basketActions} = require('../Stores/basketStore');
 require('../css/product-item.css');
 
 var Item = React.createClass({
@@ -9,7 +11,7 @@ var Item = React.createClass({
     },
 
     addTobasket: function () {
-        console.log('addTobasket');
+        basketActions.addItem(this.props.product);
     },
 
     render() {

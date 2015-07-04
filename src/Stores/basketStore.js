@@ -3,17 +3,17 @@ var _  = require('underscore');
 
 
 var actions = Reflux.createActions([
-    ""
+    "addItem"
 ]);
 
 var basketStore = Reflux.createStore({
     init() {
         this.listenToMany(actions);
-        this.items = null;
+        this.items = [];
     },
 
     addItem(item){
-        this.items = _.isNull(this.items) ? item : _.extend(this.items, data)
+        this.items.push(item);
         this.trigger(this.items)
     }
 });
