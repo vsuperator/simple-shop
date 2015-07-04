@@ -1,8 +1,10 @@
 'use strict';
 
 var React = require('react');
+var _ = require('underscore');
 
 var {basketStore, basketActions} = require('../Stores/basketStore');
+var {productsStore, productsActions} = require('../Stores/productsStore');
 require('../css/product-item.css');
 
 var Item = React.createClass({
@@ -10,8 +12,22 @@ var Item = React.createClass({
         // there will be prop types
     },
 
+    getInitialState(){
+        return {
+            quantity: 1,
+            product: _.clone(this.props.product)
+        }
+    },
+
     addTobasket: function () {
-        basketActions.addItem(this.props.product);
+        productsActions.changeQuantity(this.state.product.id, this.state.quantity);
+        basketActions.addItem(this.state.product, this.state.quantity);
+    },
+
+    handleChange(e){
+        this.setState({
+            quantity: e.target.value
+        });
     },
 
     render() {
@@ -22,7 +38,8 @@ var Item = React.createClass({
                 <a href="#">{product.title}</a>
                 <span className="description">{product.description}</span>
                 <div>
-                    <input type="number" min="1" max={product.quantity}/>
+                    <input type="number" value={this.state.quantity}
+                        min="0" max={product.quantity} onChange={this.handleChange}/>
                     <span>{product.price}</span>
                     <button onClick={this.addTobasket}>Add to basket</button>
                 </div>

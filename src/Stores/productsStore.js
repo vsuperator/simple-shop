@@ -4,7 +4,8 @@ var _  = require('underscore');
 
 
 var actions = Reflux.createActions([
-    "loadListOfProducts"
+    "loadListOfProducts",
+    "changeQuantity"
 ]);
 
 var productsStore = Reflux.createStore({
@@ -16,6 +17,12 @@ var productsStore = Reflux.createStore({
     loadListOfProducts() {
         Api.getProducts()
             .done(response => this.productsReceived(response.products));
+    },
+
+    changeQuantity(id, quantity){
+        var currentItem = _.find(this.products, {id: id});
+        currentItem.quantity = currentItem.quantity - quantity;
+        this.productsReceived(this.products);
     },
 
     productsReceived(data){

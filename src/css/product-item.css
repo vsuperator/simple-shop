@@ -14,3 +14,7 @@
     height: 100px;
     overflow: hidden;
 }
+
+.disable {
+    pointer-events: none;
+}
