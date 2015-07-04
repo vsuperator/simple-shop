@@ -18,6 +18,9 @@ var Q = function (data) {
 var Api = {
     getCategories(){
         return Q({url: './data/categories.json'});
+    },
+    getProducts(){
+        return Q({url: './data/products.json'});
     }
 };
 

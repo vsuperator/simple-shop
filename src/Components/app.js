@@ -6,18 +6,22 @@ var Reflux = require('reflux');
 
 var Item = require('./Item');
 var {categoriesStore, categoriesActions} = require('../Stores/categoriesStore');
+var {productsStore, productsActions} = require('../Stores/productsStore');
 
 var App = React.createClass({
     mixins: [
-        Reflux.connect(categoriesStore, 'categories')
+        Reflux.connect(categoriesStore, 'categories'),
+        Reflux.connect(productsStore, 'products')
     ],
     getInitialState() {
         return {
-            categories: null
+            categories: null,
+            products: null
         }
     },
     componentDidMount() {
         categoriesActions.loadListOfCategories();
+        productsActions.loadListOfProducts();
     },
 
     sortByCategory(value){
@@ -27,7 +31,18 @@ var App = React.createClass({
     getCategories(){
         return !_.isNull(this.state.categories) ?
             this.state.categories.map(cat =>
-                <a href="#" onClick={this.sortByCategory.bind(null, cat.id)}>{cat.title}</a>
+                <a href="#" onClick={this.sortByCategory.bind(null, cat.id)} key={cat.id}>
+                    {cat.title}
+                </a>
+            ) :
+            null;
+    },
+
+
+    getItems(){
+        return !_.isNull(this.state.products) ?
+            this.state.products.map(product =>
+                <Item product={product} key={product.id}/>
             ) :
             null;
     },
@@ -44,7 +59,7 @@ var App = React.createClass({
                         <span>Sort by</span>
                     </div>
                 </div>
-                <Item/>
+                {this.getItems()}
             </div>
         );
     }
