@@ -7,6 +7,7 @@ var Reflux = require('reflux');
 var Item = require('./Item');
 var {categoriesStore, categoriesActions} = require('../Stores/categoriesStore');
 var {productsStore, productsActions} = require('../Stores/productsStore');
+var Basket = require('./Basket');
 
 var App = React.createClass({
     mixins: [
@@ -59,7 +60,10 @@ var App = React.createClass({
                         <span>Sort by</span>
                     </div>
                 </div>
-                {this.getItems()}
+                <ul>
+                    {this.getItems()}
+                </ul>
+                <Basket />
             </div>
         );
     }
