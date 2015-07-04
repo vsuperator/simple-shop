@@ -5,6 +5,7 @@ var _  = require('underscore');
 
 var actions = Reflux.createActions([
     "loadListOfProducts",
+    "sortByPrice",
     "changeQuantity",
     "setCategory"
 ]);
