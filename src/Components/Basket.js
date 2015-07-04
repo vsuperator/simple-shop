@@ -35,7 +35,9 @@ var Basket = React.createClass({
 
     getItems(){
         return !_.isNull(this.state.basketItems) ?
-            this.state.basketItems.map(item => <BasketItem item={item} key={item.id}/>) :
+            this.state.basketItems.map(item =>
+                <BasketItem item={_.clone(item)} key={item.id}/>
+            ) :
             null;
     },
 

@@ -1,4 +1,5 @@
 var React = require('react');
+var _ = require('underscore');
 
 
 var BasketItem = React.createClass({
@@ -8,17 +9,18 @@ var BasketItem = React.createClass({
 
     //getInitialState(){
     //    return {
-    //        quantity: this.props.item.quantity
+    //        quantity:
     //    }
     //},
 
-    handleChange(e){
-        console.log(e.target.value);
-    },
+    //handleChange(e){
+    //    this.setState({
+    //        quantity: e.target.value
+    //    });
+    //},
 
     render(){
         var item = this.props.item;
-        console.log(item.quantity);
         var price = item.quantity * item.price;
         return (
             <li>

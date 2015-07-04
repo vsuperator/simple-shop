@@ -32,7 +32,6 @@ var Item = React.createClass({
 
     render() {
         var product = this.props.product;
-        console.log(product.quantity);
         return (
             <li className="product-item">
                 <p>Галерея</p>
