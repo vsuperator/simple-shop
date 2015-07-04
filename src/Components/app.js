@@ -1,12 +1,35 @@
 'use strict';
 
 var React = require('react');
+var _ = require('underscore');
+var Reflux = require('reflux');
+
 var Item = require('./Item');
 var {categoriesStore, categoriesActions} = require('../Stores/categoriesStore');
 
 var App = React.createClass({
+    mixins: [
+        Reflux.connect(categoriesStore, 'categories')
+    ],
+    getInitialState() {
+        return {
+            categories: null
+        }
+    },
     componentDidMount() {
         categoriesActions.loadListOfCategories();
+    },
+
+    sortByCategory(value){
+        console.log(value);
+    },
+
+    getCategories(){
+        return !_.isNull(this.state.categories) ?
+            this.state.categories.map(cat =>
+                <a href="#" onClick={this.sortByCategory.bind(null, cat.id)}>{cat.title}</a>
+            ) :
+            null;
     },
 
     render() {
@@ -15,9 +38,7 @@ var App = React.createClass({
                 <div className="header">
                     <div>
                         <span>Please choose category</span>
-                        <a href='#'>Category #1</a>
-                        <a href='#'>Category #2</a>
-                        <a href='#'>Category #3</a>
+                        {this.getCategories()}
                     </div>
                     <div>
                         <span>Sort by</span>

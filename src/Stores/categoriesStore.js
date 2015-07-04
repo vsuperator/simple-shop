@@ -1,4 +1,6 @@
 var Reflux = require('reflux');
+var Api = require('../Api');
+var _  = require('underscore');
 
 
 var actions = Reflux.createActions([
@@ -8,10 +10,17 @@ var actions = Reflux.createActions([
 var categoriesStore = Reflux.createStore({
     init() {
         this.listenToMany(actions);
+        this.categories = null;
     },
 
     loadListOfCategories() {
-        console.log('111');
+        Api.getCategories()
+            .done(response => this.categoriesReceived(response.categories));
+    },
+
+    categoriesReceived(data){
+        this.categories = _.clone(data);
+        this.trigger(this.categories);
     }
 });
 
