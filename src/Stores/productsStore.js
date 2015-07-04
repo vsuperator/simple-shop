@@ -7,6 +7,7 @@ var actions = Reflux.createActions([
     "loadListOfProducts",
     "sortByPrice",
     "changeQuantity",
+    "increaseQuantity",
     "setCategory"
 ]);
 
@@ -27,9 +28,19 @@ var productsStore = Reflux.createStore({
         this.productsReceived(this.allProducts);
     },
 
+    increaseQuantity(id, quantity, maxQuantity){
+        var currentItem = _.find(this.allProducts, {id: id});
+        if(currentItem.quantity >= maxQuantity){
+            return
+        }
+        currentItem.quantity = currentItem.quantity + quantity;
+        this.productsReceived(this.allProducts);
+    },
+
     changeQuantity(id, quantity){
         var currentItem = _.find(this.allProducts, {id: id});
         currentItem.quantity = currentItem.quantity - quantity;
+        console.log('Остаток ' + currentItem.quantity);
         this.productsReceived(this.allProducts);
     },
 

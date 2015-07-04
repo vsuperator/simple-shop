@@ -38,7 +38,7 @@ var Item = React.createClass({
                 <a href="#">{product.title}</a>
                 <span className="description">{product.description}</span>
                 <div>
-                    <input type="number" value={this.state.quantity}
+                    <input type="number" value={product.quantity == 0 ? 0 : this.state.quantity}
                         min="0" max={product.quantity} onChange={this.handleChange}/>
                     <span>{product.price}</span>
                     <button className={product.quantity == 0 ? 'disable' : null}

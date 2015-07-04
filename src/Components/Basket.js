@@ -48,7 +48,7 @@ var Basket = React.createClass({
                 <ul>
                     {this.getItems()}
                 </ul>
-                <p>{this.state.price}</p>
+                <p>{_.isNull(this.state.price) || this.state.price == 0 ? null : this.state.price}</p>
             </div>
         );
     }
