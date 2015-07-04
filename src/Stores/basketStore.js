@@ -10,6 +10,11 @@ var basketStore = Reflux.createStore({
     init() {
         this.listenToMany(actions);
         this.items = null;
+    },
+
+    addItem(item){
+        this.items = _.isNull(this.items) ? item : _.extend(this.items, data)
+        this.trigger(this.items)
     }
 });
 
