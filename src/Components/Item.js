@@ -20,7 +20,7 @@ var Item = React.createClass({
     },
 
     addTobasket: function () {
-        productsActions.changeQuantity(this.state.product.id, this.state.quantity);
+        productsActions.decreaseQuantity(this.state.product.id, this.state.quantity);
         basketActions.addItem(this.state.product, this.state.quantity);
     },
 

@@ -6,7 +6,7 @@ var _  = require('underscore');
 var actions = Reflux.createActions([
     "loadListOfProducts",
     "sortByPrice",
-    "changeQuantity",
+    "decreaseQuantity",
     "increaseQuantity",
     "setCategory"
 ]);
@@ -28,19 +28,15 @@ var productsStore = Reflux.createStore({
         this.productsReceived(this.allProducts);
     },
 
-    increaseQuantity(id, quantity, maxQuantity){
+    increaseQuantity(id, quantity){
         var currentItem = _.find(this.allProducts, {id: id});
-        if(currentItem.quantity >= maxQuantity){
-            return
-        }
         currentItem.quantity = currentItem.quantity + quantity;
         this.productsReceived(this.allProducts);
     },
 
-    changeQuantity(id, quantity){
+    decreaseQuantity(id, quantity){
         var currentItem = _.find(this.allProducts, {id: id});
         currentItem.quantity = currentItem.quantity - quantity;
-        console.log('Остаток ' + currentItem.quantity);
         this.productsReceived(this.allProducts);
     },
 

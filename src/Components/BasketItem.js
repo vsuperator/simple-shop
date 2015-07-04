@@ -11,14 +11,14 @@ var BasketItem = React.createClass({
 
 
     handleChange(e){
-        console.log(this.props.item.quantity);
+        var different = this.props.item.quantityToBuy - e.target.value;
         if(e.target.value < this.props.item.quantityToBuy) {
-            var different = this.props.item.quantityToBuy - e.target.value;
             productsActions.increaseQuantity(this.props.item.id, different, this.props.item.quantity);
             basketActions.decreaseItemsQuantity(this.props.item.id, different);
+            return
         }
-        // Нужно изменять значение в productStore
-        // а также в basketStore
+        productsActions.decreaseQuantity(this.props.item.id, different, this.props.item.quantity);
+        basketActions.increaseItemsQuantity(this.props.item.id, different);
     },
 
     render(){
@@ -27,7 +27,7 @@ var BasketItem = React.createClass({
         return (
             <li>
                 <span>{item.title}</span>
-                <input type="number" value={item.quantityToBuy} onChange={this.handleChange} min="0" max="999"/>
+                <input type="number" value={item.quantityToBuy} onChange={this.handleChange} min="0" max={item.quantity}/>
                 <span>{price}</span>
             </li>
         )

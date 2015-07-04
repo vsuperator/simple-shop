@@ -4,7 +4,8 @@ var _  = require('underscore');
 
 var actions = Reflux.createActions([
     "addItem",
-    "decreaseItemsQuantity"
+    "decreaseItemsQuantity",
+    "increaseItemsQuantity"
 ]);
 
 var basketStore = Reflux.createStore({
@@ -30,6 +31,15 @@ var basketStore = Reflux.createStore({
         if(currentItem.quantityToBuy === 0){
             this.removeItem(id);
         }
+        this.trigger({
+            items: this.items,
+            price: this.getPrice()
+        })
+    },
+
+    increaseItemsQuantity(id, quantity){
+        var currentItem = _.find(this.items, {id: id});
+        currentItem.quantityToBuy -= quantity;
         this.trigger({
             items: this.items,
             price: this.getPrice()
