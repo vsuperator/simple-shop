@@ -57,9 +57,9 @@ var basketStore = Reflux.createStore({
         //localStorage.setItem('items', JSON.stringify(items));
         this.items = _.clone(items);
         this.trigger({
-            items: this.items,
+            basketItems: this.items,
             price: this.getPrice(),
-            count: this.getCountInBasket()
+            countInBasket: this.getCountInBasket()
         })
     },
 

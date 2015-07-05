@@ -28,11 +28,7 @@ var Basket = React.createClass({
     },
 
     onBasketItemsReceived(data){
-        this.setState({
-            basketItems: data.items,
-            price: data.price,
-            countInBasket: data.count
-        });
+        this.setState(data);
     },
 
     getItems(){
@@ -44,6 +40,8 @@ var Basket = React.createClass({
     },
 
     render() {
+        var basketCount = _.isNull(this.state.countInBasket) || this.state.countInBasket == 0 ?
+            null : this.state.countInBasket;
         var totalPrice = _.isNull(this.state.price) || this.state.price == 0 ?
             null:
             <li className="basket-item total-price">
@@ -51,7 +49,7 @@ var Basket = React.createClass({
             </li>;
         return (
             <div className="basket-container">
-                <div className="basket-header">Shopping basket {this.state.countInBasket}</div>
+                <div className="basket-header">Shopping basket {basketCount}</div>
                 <ul>
                     {this.getItems()}
                     {totalPrice}
