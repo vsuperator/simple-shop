@@ -7,18 +7,21 @@ var Reflux = require('reflux');
 var Item = require('./Item');
 var {categoriesStore, categoriesActions} = require('../Stores/categoriesStore');
 var {productsStore, productsActions} = require('../Stores/productsStore');
+var {galleriesStore, galleriesActions} = require('../Stores/galleriesStore');
 var Basket = require('./Basket');
 
 var App = React.createClass({
     mixins: [
         Reflux.connect(categoriesStore, 'categories'),
-        Reflux.connect(productsStore, 'products')
+        Reflux.connect(productsStore, 'products'),
+        Reflux.connect(galleriesStore, 'galleries')
     ],
 
     getInitialState() {
         return {
             categories: null,
             products: null,
+            galleries: null,
             sortBy: 'none'
         }
     },
@@ -26,6 +29,7 @@ var App = React.createClass({
     componentDidMount() {
         categoriesActions.loadListOfCategories();
         productsActions.loadListOfProducts();
+        galleriesActions.loadListOfImages();
     },
 
     filterByCategory(id){
@@ -55,10 +59,14 @@ var App = React.createClass({
         return sortedByPrice.reverse();
     },
 
+    getImagesById(id){
+        return _.find(this.state.galleries, {id: id});
+    },
+
     getItems(){
-        return !_.isNull(this.state.products) ?
+        return !_.isNull(this.state.products) && !_.isNull(this.state.galleries) ?
             this.sortedItems(this.state.sortBy).map(product =>
-                <Item product={product} key={product.id}/>
+                <Item product={product} images={this.getImagesById(product.gallery_id)} key={product.id}/>
             ) :
             null;
     },

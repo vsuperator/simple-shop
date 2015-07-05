@@ -21,6 +21,9 @@ var Api = {
     },
     getProducts(){
         return Q({url: './data/products.json'});
+    },
+    getImages(){
+        return Q({url: './data/galleries.json'});
     }
 };
 
