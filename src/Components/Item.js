@@ -21,8 +21,6 @@ var Item = React.createClass({
 
     addTobasket: function () {
         productsActions.updateItem(this.state.product.id, this.state.quantity);
-        //productsActions.decreaseQuantity(this.state.product.id, this.state.quantity);
-        //basketActions.addItem(this.state.product, this.state.quantity);
     },
 
     handleChange(e){
@@ -39,8 +37,8 @@ var Item = React.createClass({
                 <a href="#">{product.title}</a>
                 <span className="description">{product.description}</span>
                 <div className="item-select-container">
-                    <input type="number" value={product.quantity == 0 ? 0 : this.state.quantity}
-                        min="0" max={product.quantity} onChange={this.handleChange}/>
+                    <input type="number" defaultValue="1" value={product.quantity == 0 ? 0 : this.state.quantity}
+                        min="0" max={product.quantity - this.props.product.countInBasket} onChange={this.handleChange}/>
                     <span>{product.price}</span>
                     <button className={product.quantity == 0 ? 'disable' : null}
                         onClick={this.addTobasket}>Add</button>
