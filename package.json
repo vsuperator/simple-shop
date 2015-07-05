@@ -1,13 +1,13 @@
 {
-  "name": "react-hot-boilerplate",
+  "name": "react-hot-reload",
   "version": "0.1.2",
-  "description": "Boilerplate for ReactJS project with hot code reloading",
+  "description": "ReactJS project with hot code reloading",
   "scripts": {
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaearon/react-hot-boilerplate.git"
+    "url": "https://github.com/vsuperator/simple-shop.git"
   },
   "keywords": [
     "react",
@@ -21,12 +21,12 @@
     "edit",
     "webpack"
   ],
-  "author": "Dan Abramov <dan.abramov@me.com> (http://github.com/gaearon)",
+  "author": "Roma",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gaearon/react-hot-boilerplate/issues"
+    "url": "https://github.com/vsuperator/simple-shop.git"
   },
-  "homepage": "https://github.com/gaearon/react-hot-boilerplate",
+  "homepage": "https://github.com/vsuperator/simple-shop.git",
   "devDependencies": {
     "jsx-loader": "^0.12.2",
     "react-hot-loader": "^1.1.1",
