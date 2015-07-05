@@ -23,7 +23,8 @@ var App = React.createClass({
             categories: null,
             products: null,
             galleries: null,
-            sortBy: 'none'
+            sortBy: 'none',
+            category: null
         }
     },
 
@@ -34,7 +35,9 @@ var App = React.createClass({
     },
 
     filterByCategory(id){
-        productsActions.setCategory(id);
+        this.setState({
+            category: id
+        });
     },
 
     getCategories(){
@@ -48,7 +51,9 @@ var App = React.createClass({
     },
 
     sortedItems(value){
-        var products = this.state.products;
+        var products = !_.isNull(this.state.category) ?
+            _.where(this.state.products, {category_id: this.state.category}) :
+            this.state.products;
         if(value === 'none'){
             return products;
         }

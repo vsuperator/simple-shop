@@ -60,10 +60,6 @@ var productsStore = Reflux.createStore({
     productsReceived(data){
         this.allProducts = _.clone(data);
         localStorage.setItem('products', JSON.stringify(this.allProducts));
-        if(!_.isNull(this.category)){
-            this.trigger(_.where(this.allProducts, {category_id: this.category}));
-            return
-        }
         this.trigger(this.allProducts);
     }
 });
