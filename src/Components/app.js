@@ -60,7 +60,7 @@ var App = React.createClass({
     },
 
     getImagesById(id){
-        return _.find(this.state.galleries, {id: id});
+        return _.find(this.state.galleries, {id: id}).images;
     },
 
     getItems(){

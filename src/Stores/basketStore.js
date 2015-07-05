@@ -12,7 +12,14 @@ var basketStore = Reflux.createStore({
     init() {
         this.listenToMany(actions);
         this.items = [];
+        //this.getInitialItems();
     },
+
+    //getInitialItems(){
+    //    return !_.isNull(localStorage.getItem('items')) ?
+    //        JSON.parse(localStorage.getItem('items')) :
+    //        [];
+    //},
 
     getPrice(){
         return this.items.reduce(function(sum, current) {
@@ -31,15 +38,18 @@ var basketStore = Reflux.createStore({
         if(currentItem.quantityToBuy === 0){
             this.removeItem(id);
         }
-        this.trigger({
-            items: this.items,
-            price: this.getPrice()
-        })
+        this.triggerItems(this.items)
     },
 
     increaseItemsQuantity(id, quantity){
         var currentItem = _.find(this.items, {id: id});
         currentItem.quantityToBuy -= quantity;
+        this.triggerItems(this.items)
+    },
+
+    triggerItems(items){
+        //localStorage.setItem('items', JSON.stringify(items));
+        this.items = _.clone(items);
         this.trigger({
             items: this.items,
             price: this.getPrice()
@@ -53,11 +63,7 @@ var basketStore = Reflux.createStore({
         } else {
             this.items.push(_.extend(item, {quantityToBuy: quantity}))
         }
-
-        this.trigger({
-            items: this.items,
-            price: this.getPrice()
-        })
+        this.triggerItems(this.items)
     }
 });
 
