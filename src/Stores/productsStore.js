@@ -22,9 +22,18 @@ var productsStore = Reflux.createStore({
     },
 
     loadListOfProducts() {
+        if(!_.isUndefined(localStorage.getItem('products'))){
+            this.getItemsFromStorage();
+            return
+        }
         Api.getProducts()
             .then(response => this.addProperty(response))
             .done(response => this.productsReceived(response));
+    },
+
+    getItemsFromStorage(){
+        this.allProducts = JSON.parse(localStorage.getItem('products'));
+        this.productsReceived(this.allProducts);
     },
 
     setCategory(id){
@@ -43,7 +52,6 @@ var productsStore = Reflux.createStore({
     },
 
     updateItemFromBasket(id, quantity){
-        console.log(quantity);
         var currentItem = _.find(this.allProducts, {id: id});
         currentItem.countInBasket = currentItem.countInBasket - quantity;
         this.productsReceived(this.allProducts);
@@ -51,6 +59,7 @@ var productsStore = Reflux.createStore({
 
     productsReceived(data){
         this.allProducts = _.clone(data);
+        localStorage.setItem('products', JSON.stringify(this.allProducts));
         if(!_.isNull(this.category)){
             this.trigger(_.where(this.allProducts, {category_id: this.category}));
             return

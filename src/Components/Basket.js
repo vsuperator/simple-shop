@@ -27,6 +27,7 @@ var Basket = React.createClass({
     },
 
     onProductsReceived(data){
+        console.log(data);
         var basketItems = data.filter(item => item.countInBasket > 0);
         this.setState({
             basketItems: basketItems
