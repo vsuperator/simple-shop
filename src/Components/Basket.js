@@ -7,7 +7,7 @@ var _ = require('underscore');
 
 var BasketItem = require('./BasketItem');
 var {basketStore} = require('../Stores/basketStore');
-require('../css/product-item.css');
+require('../css/basket.css');
 
 
 var Basket = React.createClass({
@@ -42,13 +42,18 @@ var Basket = React.createClass({
     },
 
     render() {
+        var totalPrice = _.isNull(this.state.price) || this.state.price == 0 ?
+            null:
+            <li className="basket-item total-price">
+                {this.state.price}
+            </li>;
         return (
-            <div>
-                <div className="header">Shopping basket</div>
+            <div className="basket-container">
+                <div className="basket-header">Shopping basket</div>
                 <ul>
                     {this.getItems()}
+                    {totalPrice}
                 </ul>
-                <p>{_.isNull(this.state.price) || this.state.price == 0 ? null : this.state.price}</p>
             </div>
         );
     }

@@ -9,6 +9,7 @@ var {categoriesStore, categoriesActions} = require('../Stores/categoriesStore');
 var {productsStore, productsActions} = require('../Stores/productsStore');
 var {galleriesStore, galleriesActions} = require('../Stores/galleriesStore');
 var Basket = require('./Basket');
+require('../css/main.css');
 
 var App = React.createClass({
     mixins: [
@@ -39,7 +40,7 @@ var App = React.createClass({
     getCategories(){
         return !_.isNull(this.state.categories) ?
             this.state.categories.map(cat =>
-                <a href="#" onClick={this.filterByCategory.bind(null, cat.id)} key={cat.id}>
+                <a className="category" href="#" onClick={this.filterByCategory.bind(null, cat.id)} key={cat.id}>
                     {cat.title}
                 </a>
             ) :
@@ -79,13 +80,13 @@ var App = React.createClass({
 
     render() {
         return (
-            <div>
+            <div className="main-container">
                 <div className="header">
-                    <div>
-                        <span>Please choose category</span>
+                    <div className="header-top-line">
+                        <span>Please choose category: </span>
                         {this.getCategories()}
                     </div>
-                    <div>
+                    <div className="header-bottom-line">
                         <select type="select" label="Sort by" onChange={this.changeSortBy}>
                             <option value="none">-------</option>
                             <option value="lowest">Price: lowest first</option>
@@ -93,7 +94,7 @@ var App = React.createClass({
                         </select>
                     </div>
                 </div>
-                <ul>
+                <ul className="items-container">
                     {this.getItems()}
                 </ul>
                 <Basket />

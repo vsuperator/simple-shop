@@ -1,5 +1,6 @@
 var React = require('react');
 var _ = require('underscore');
+var _str = require('underscore.string');
 var {productsActions} = require('../Stores/productsStore');
 var {basketActions} = require('../Stores/basketStore');
 
@@ -25,10 +26,12 @@ var BasketItem = React.createClass({
         var item = this.props.item;
         var price = item.quantityToBuy * item.price;
         return (
-            <li>
-                <span>{item.title}</span>
-                <input type="number" value={item.quantityToBuy} onChange={this.handleChange} min="0" max={item.quantity}/>
-                <span>{price}</span>
+            <li className="basket-item">
+                <span>{_str.truncate(item.title, 26)}</span>
+                <div className="basket-item-right-block">
+                    <input type="number" value={item.quantityToBuy} onChange={this.handleChange} min="0" max={item.quantity}/>
+                    <span>{price}</span>
+                </div>
             </li>
         )
     }

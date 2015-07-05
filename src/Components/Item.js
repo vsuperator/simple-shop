@@ -37,12 +37,12 @@ var Item = React.createClass({
                 <p>Галерея</p>
                 <a href="#">{product.title}</a>
                 <span className="description">{product.description}</span>
-                <div>
+                <div className="item-select-container">
                     <input type="number" value={product.quantity == 0 ? 0 : this.state.quantity}
                         min="0" max={product.quantity} onChange={this.handleChange}/>
                     <span>{product.price}</span>
                     <button className={product.quantity == 0 ? 'disable' : null}
-                        onClick={this.addTobasket}>Add to basket</button>
+                        onClick={this.addTobasket}>Add</button>
                 </div>
             </li>
         );

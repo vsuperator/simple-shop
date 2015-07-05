@@ -1,13 +1,9 @@
-.product-item {
-    padding: 10px;
-    margin: 10px;
-    position: relative;
-    border: 1px solid black;
-    display: inline-block;
-    width: 125px;
-    vertical-align: top;
-    height: 250px;
+.item-select-container {
+    position: absolute;
+    width: 160px;
+    bottom: 10px;
 }
+
 
 .description {
     display: inline-block;
