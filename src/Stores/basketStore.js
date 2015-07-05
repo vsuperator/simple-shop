@@ -27,6 +27,12 @@ var basketStore = Reflux.createStore({
         }, 0);
     },
 
+    getCountInBasket(){
+        return this.items.reduce(function(sum, current) {
+            return sum + current.quantityToBuy;
+        }, 0);
+    },
+
     removeItem(id){
         var currentItem = _.find(this.items, {id: id});
         this.items = _.without(this.items, currentItem)
@@ -52,7 +58,8 @@ var basketStore = Reflux.createStore({
         this.items = _.clone(items);
         this.trigger({
             items: this.items,
-            price: this.getPrice()
+            price: this.getPrice(),
+            count: this.getCountInBasket()
         })
     },
 
