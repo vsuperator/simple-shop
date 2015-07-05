@@ -20,8 +20,9 @@ var Item = React.createClass({
     },
 
     addTobasket: function () {
-        productsActions.decreaseQuantity(this.state.product.id, this.state.quantity);
-        basketActions.addItem(this.state.product, this.state.quantity);
+        productsActions.updateItem(this.state.product.id, this.state.quantity);
+        //productsActions.decreaseQuantity(this.state.product.id, this.state.quantity);
+        //basketActions.addItem(this.state.product, this.state.quantity);
     },
 
     handleChange(e){
@@ -31,7 +32,7 @@ var Item = React.createClass({
     },
 
     render() {
-        var product = this.props.product;
+        var product = this.state.product;
         return (
             <li className="product-item">
                 <p>Галерея</p>

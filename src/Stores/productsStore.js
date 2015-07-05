@@ -5,9 +5,8 @@ var _  = require('underscore');
 
 var actions = Reflux.createActions([
     "loadListOfProducts",
-    "sortByPrice",
-    "decreaseQuantity",
-    "increaseQuantity",
+    "updateItem",
+    "updateItemFromBasket",
     "setCategory"
 ]);
 
@@ -18,9 +17,14 @@ var productsStore = Reflux.createStore({
         this.category = null;
     },
 
+    addProperty(data){
+        return data.products.map(product => _.extend(product, {countInBasket: 0}) )
+    },
+
     loadListOfProducts() {
         Api.getProducts()
-            .done(response => this.productsReceived(response.products));
+            .then(response => this.addProperty(response))
+            .done(response => this.productsReceived(response));
     },
 
     setCategory(id){
@@ -28,15 +32,20 @@ var productsStore = Reflux.createStore({
         this.productsReceived(this.allProducts);
     },
 
-    increaseQuantity(id, quantity){
+    updateItem(id, quantity){
         var currentItem = _.find(this.allProducts, {id: id});
-        currentItem.quantity = currentItem.quantity + quantity;
+        if((currentItem.countInBasket + quantity) < currentItem.quantity) {
+            currentItem.countInBasket += quantity;
+        } else {
+            currentItem.countInBasket = currentItem.quantity;
+        }
         this.productsReceived(this.allProducts);
     },
 
-    decreaseQuantity(id, quantity){
+    updateItemFromBasket(id, quantity){
+        console.log(quantity);
         var currentItem = _.find(this.allProducts, {id: id});
-        currentItem.quantity = currentItem.quantity - quantity;
+        currentItem.countInBasket = currentItem.countInBasket - quantity;
         this.productsReceived(this.allProducts);
     },
 
