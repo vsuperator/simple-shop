@@ -65,14 +65,14 @@ var App = React.createClass({
         return sortedByPrice.reverse();
     },
 
-    getImagesById(id){
-        return _.find(this.state.galleries, {id: id}).images;
+    getGalleryById(id){
+        return _.find(this.state.galleries, {id: id});
     },
 
     getItems(){
         return !_.isNull(this.state.products) && !_.isNull(this.state.galleries) ?
             this.sortedItems(this.state.sortBy).map(product =>
-                <Item product={product} images={this.getImagesById(product.gallery_id)} key={product.id}/>
+                <Item product={product} gallery={this.getGalleryById(product.gallery_id)} key={product.id}/>
             ) :
             null;
     },

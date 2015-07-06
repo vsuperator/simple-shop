@@ -2,9 +2,11 @@
 
 var React = require('react');
 var _ = require('underscore');
+var _str = require('underscore.string');
 
 var {basketStore, basketActions} = require('../Stores/basketStore');
 var {productsStore, productsActions} = require('../Stores/productsStore');
+var Gallery = require('./Gallery');
 require('../css/product-item.css');
 
 var Item = React.createClass({
@@ -39,9 +41,9 @@ var Item = React.createClass({
 
         return (
             <li className="product-item">
-                <p>Галерея</p>
-                <a href="#">{product.title}</a>
-                <span className="description">{product.description}</span>
+                <Gallery gallery={this.props.gallery}/>
+                <a href="#" className="product-title">{_str.truncate(product.title, 20)}</a>
+                <span className="description">{_str.truncate(product.description, 70)}</span>
                 <div className="item-select-container">
                     <input type="number" defaultValue="1" value={valueInSelect}
                         min="0" max={balance} onChange={this.handleChange}/>
