@@ -20,6 +20,9 @@ var Item = React.createClass({
     },
 
     addTobasket: function () {
+        if(this.state.product.quantity == this.props.product.countInBasket){
+            return
+        }
         productsActions.updateItem(this.state.product.id, this.state.quantity);
     },
 
@@ -31,16 +34,19 @@ var Item = React.createClass({
 
     render() {
         var product = this.state.product;
+        var balance = product.quantity - this.props.product.countInBasket;
+        var valueInSelect = balance == 0 ? balance : this.state.quantity;
+
         return (
             <li className="product-item">
                 <p>Галерея</p>
                 <a href="#">{product.title}</a>
                 <span className="description">{product.description}</span>
                 <div className="item-select-container">
-                    <input type="number" defaultValue="1" value={product.quantity == 0 ? 0 : this.state.quantity}
-                        min="0" max={product.quantity - this.props.product.countInBasket} onChange={this.handleChange}/>
+                    <input type="number" defaultValue="1" value={valueInSelect}
+                        min="0" max={balance} onChange={this.handleChange}/>
                     <span>{product.price}</span>
-                    <button className={product.quantity == 0 ? 'disable' : null}
+                    <button className={balance == 0 ? 'disable' : null}
                         onClick={this.addTobasket}>Add</button>
                 </div>
             </li>
