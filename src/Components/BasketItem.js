@@ -2,7 +2,6 @@ var React = require('react');
 var _ = require('underscore');
 var _str = require('underscore.string');
 var {productsActions} = require('../Stores/productsStore');
-var {basketActions} = require('../Stores/basketStore');
 
 
 var BasketItem = React.createClass({

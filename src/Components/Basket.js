@@ -7,7 +7,6 @@ var _ = require('underscore');
 
 var BasketItem = require('./BasketItem');
 var {productsStore} = require('../Stores/productsStore');
-var {basketStore} = require('../Stores/basketStore');
 require('../css/basket.css');
 
 

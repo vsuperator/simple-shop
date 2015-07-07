@@ -4,7 +4,6 @@ var React = require('react');
 var _ = require('underscore');
 var _str = require('underscore.string');
 
-var {basketStore, basketActions} = require('../Stores/basketStore');
 var {productsStore, productsActions} = require('../Stores/productsStore');
 var Gallery = require('./Gallery');
 require('../css/product-item.css');

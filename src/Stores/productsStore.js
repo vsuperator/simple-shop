@@ -22,7 +22,8 @@ var productsStore = Reflux.createStore({
     },
 
     loadListOfProducts() {
-        if(!_.isUndefined(localStorage.getItem('products'))){
+        var productsInLS = JSON.parse(localStorage.getItem('products'));
+        if(!_.isNull(productsInLS)){
             this.getItemsFromStorage();
             return
         }
