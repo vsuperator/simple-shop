@@ -9,7 +9,8 @@ var {categoriesStore, categoriesActions} = require('../Stores/categoriesStore');
 var {productsStore, productsActions} = require('../Stores/productsStore');
 var {galleriesStore, galleriesActions} = require('../Stores/galleriesStore');
 var Basket = require('./Basket');
-require('../css/main.css');
+//require('../css/main.css');
+require('../css/responsive/main.css');
 
 var App = React.createClass({
     mixins: [
@@ -88,7 +89,7 @@ var App = React.createClass({
             <div className="main-container">
                 <div className="header">
                     <div className="header-top-line">
-                        <span>Please choose category: </span>
+                        <div className="header-top-line-title">Please choose category: </div>
                         {this.getCategories()}
                     </div>
                     <div className="header-bottom-line">

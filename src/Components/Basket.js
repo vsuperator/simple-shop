@@ -7,7 +7,7 @@ var _ = require('underscore');
 
 var BasketItem = require('./BasketItem');
 var {productsStore} = require('../Stores/productsStore');
-require('../css/basket.css');
+//require('../css/basket.css');
 
 
 var Basket = React.createClass({
