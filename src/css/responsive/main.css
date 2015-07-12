@@ -36,6 +36,14 @@ img {
     width: 100%;
 }
 
+.produc-price {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    color: #FFFFFF;
+    padding: 8px 20px;
+    background: #259d00;
+}
+
 .product-item {
     width: 100%;
     max-height: 520px;
@@ -91,6 +99,16 @@ img {
 
 .basket-input {
     margin-right: 5px;
+}
+
+.add-to-basket {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    background: #259d00;
+    color: #FFFFFF;
+    padding: 8px 20px;
+    border-left: 1px solid #FFFFFF;
 }
 
 @media only screen and (min-width: 360px){
