@@ -37,7 +37,7 @@ img {
 
 .product-item {
     width: 100%;
-    height: 520px;
+    max-height: 520px;
     position: relative;
     border: 1px solid #c9c9c9;
     display: inline-block;
@@ -45,6 +45,27 @@ img {
     -webkit-box-shadow: 0px 2px 10px -2px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 2px 10px -2px rgba(0,0,0,0.75);
     box-shadow: 0px 2px 10px -2px rgba(0,0,0,0.75);
+}
+
+.product-description-block {
+    padding: 15px;
+}
+
+.product-title {
+    margin-bottom: 10px;
+}
+
+.product-description {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.item-select-container {
+    margin-bottom: 20px;
+}
+
+.price-container {
+    float: right;
 }
 
 @media only screen and (min-width: 360px){

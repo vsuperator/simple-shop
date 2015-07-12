@@ -41,14 +41,22 @@ var Item = React.createClass({
         return (
             <li className="product-item">
                 <Gallery gallery={this.props.gallery}/>
-                <a href="#" className="product-title">{_str.truncate(product.title, 20)}</a>
-                <span className="description">{_str.truncate(product.description, 70)}</span>
-                <div className="item-select-container">
-                    <input type="number" defaultValue="1" value={valueInSelect}
-                        min="0" max={balance} onChange={this.handleChange}/>
-                    <span>{product.price}</span>
-                    <button className={balance == 0 ? 'disable' : null}
-                        onClick={this.addTobasket}>Add</button>
+                <div className="product-description-block">
+                    <div className="product-title">
+                        <a href="#">{_str.truncate(product.title, 20)}</a>
+                    </div>
+                    <span className="product-description">{_str.truncate(product.description, 70)}</span>
+                    <div className="item-select-container">
+                        <input type="number" defaultValue="1" value={valueInSelect}
+                            min="0" max={balance} onChange={this.handleChange}/>
+                        <div className="price-container">
+                            <span>{product.price}</span>
+                            <button className={balance == 0 ? 'disable' : null}
+                                onClick={this.addTobasket}>
+                                Add
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </li>
         );
