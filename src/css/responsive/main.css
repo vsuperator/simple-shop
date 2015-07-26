@@ -36,14 +36,6 @@ img {
     width: 100%;
 }
 
-.produc-price {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    color: #FFFFFF;
-    padding: 8px 20px;
-    background: #259d00;
-}
-
 .product-item {
     width: 100%;
     max-height: 520px;
@@ -121,23 +113,51 @@ img {
 }
 
 .add-to-basket {
+    background: url(../../../images/add_to_basket.png) no-repeat center, -webkit-linear-gradient(top, #3cee00, #259e00);
+    background: url(../../../images/add_to_basket.png) no-repeat center, -moz-linear-gradient(top, #3cee00, #259e00);
+    background: url(../../../images/add_to_basket.png) no-repeat center, -ms-linear-gradient(top, #3cee00, #259e00);
+    background: url(../../../images/add_to_basket.png) no-repeat center, -o-linear-gradient(top, #3cee00, #259e00);
+    background: url(../../../images/add_to_basket.png) no-repeat center, linear-gradient(to bottom, #3cee00, #259e00);
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     cursor: pointer;
-    background: #259d00;
     color: #FFFFFF;
-    padding: 8px 20px;
+    padding: 12px 20px 11px 20px;
     border-left: 1px solid #FFFFFF;
 }
 
-.btn {
+.product-price {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     display: inline-block;
     background: #3cee00;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
     background-image: -webkit-linear-gradient(top, #3cee00, #259e00);
     background-image: -moz-linear-gradient(top, #3cee00, #259e00);
     background-image: -ms-linear-gradient(top, #3cee00, #259e00);
     background-image: -o-linear-gradient(top, #3cee00, #259e00);
     background-image: linear-gradient(to bottom, #3cee00, #259e00);
+}
+
+.add-to-basket:hover {
+    background: url(../../../images/add_to_basket.png) no-repeat center #3bed00;
+    background: url(../../../images/add_to_basket.png) no-repeat center, -webkit-linear-gradient(top, #0e9e0f, #0e9e0f);
+    background: url(../../../images/add_to_basket.png) no-repeat center, -moz-linear-gradient(top, #3bed00, #3cee00);
+    background: url(../../../images/add_to_basket.png) no-repeat center, -ms-linear-gradient(top, #3bed00, #3cee00);
+    background: url(../../../images/add_to_basket.png) no-repeat center, -o-linear-gradient(top, #3bed00, #3cee00);
+    background: url(../../../images/add_to_basket.png) no-repeat center, linear-gradient(to bottom, #3bed00, #3cee00);
+    text-decoration: none;
+}
+
+.product-price-disable {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    display: inline-block;
+    background: #e3e3e3;
     font-family: Arial;
     color: #ffffff;
     font-size: 18px;
@@ -145,14 +165,13 @@ img {
     text-decoration: none;
 }
 
-.add-to-basket:hover {
-    background: #3bed00;
-    background-image: -webkit-linear-gradient(top, #0e9e0f, #0e9e0f);
-    background-image: -moz-linear-gradient(top, #3bed00, #3cee00);
-    background-image: -ms-linear-gradient(top, #3bed00, #3cee00);
-    background-image: -o-linear-gradient(top, #3bed00, #3cee00);
-    background-image: linear-gradient(to bottom, #3bed00, #3cee00);
-    text-decoration: none;
+.add-to-basket-disable {
+    background: url(../../../images/add_to_basket.png) no-repeat center #e3e3e3;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #FFFFFF;
+    padding: 12px 20px 11px 20px;
+    border-left: 1px solid #FFFFFF;
 }
 
 @media only screen and (min-width: 360px){
