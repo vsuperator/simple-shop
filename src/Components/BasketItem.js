@@ -19,7 +19,7 @@ var BasketItem = React.createClass({
         var price = item.countInBasket * item.price;
         return (
             <li className="basket-item">
-                <span>{_str.truncate(item.title, 16)}</span>
+                <span className='basket-item-title'>{item.title}</span>
                 <div className="basket-item-right-block">
                     <input className="basket-input" type="number" value={item.countInBasket}
                         onChange={this.handleChange} min="0" max={item.quantity}/>
