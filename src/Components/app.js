@@ -9,8 +9,7 @@ var {categoriesStore, categoriesActions} = require('../Stores/categoriesStore');
 var {productsStore, productsActions} = require('../Stores/productsStore');
 var {galleriesStore, galleriesActions} = require('../Stores/galleriesStore');
 var Basket = require('./Basket');
-//require('../css/main.css');
-require('../css/responsive/main.css');
+require('../css/main.css');
 
 var App = React.createClass({
     mixins: [

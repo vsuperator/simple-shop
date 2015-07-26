@@ -6,7 +6,6 @@ var _str = require('underscore.string');
 
 var {productsStore, productsActions} = require('../Stores/productsStore');
 var Gallery = require('./Gallery');
-//require('../css/product-item.css');
 
 var Item = React.createClass({
     propTypes: {

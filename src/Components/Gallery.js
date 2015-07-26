@@ -1,7 +1,6 @@
 'use strict';
 
 var React = require('react');
-//require('../css/gallery.css');
 
 var Gallery = React.createClass({
 
