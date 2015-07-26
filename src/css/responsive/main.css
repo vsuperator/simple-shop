@@ -57,20 +57,23 @@ img {
 }
 
 .product-description-block {
-    padding: 15px;
+    padding-bottom: 60px;
 }
 
 .product-title {
+    padding: 0 15px;
     margin-bottom: 10px;
 }
 
 .product-description {
-    display: inline-block;
-    margin-bottom: 10px;
+    padding: 0 15px;
 }
 
 .item-select-container {
-    margin-bottom: 20px;
+    padding: 0 15px 15px 15px;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
 }
 
 .price-container {
@@ -111,8 +114,34 @@ img {
     border-left: 1px solid #FFFFFF;
 }
 
+.btn {
+    display: inline-block;
+    background: #3cee00;
+    background-image: -webkit-linear-gradient(top, #3cee00, #259e00);
+    background-image: -moz-linear-gradient(top, #3cee00, #259e00);
+    background-image: -ms-linear-gradient(top, #3cee00, #259e00);
+    background-image: -o-linear-gradient(top, #3cee00, #259e00);
+    background-image: linear-gradient(to bottom, #3cee00, #259e00);
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.add-to-basket:hover {
+    background: #3bed00;
+    background-image: -webkit-linear-gradient(top, #0e9e0f, #0e9e0f);
+    background-image: -moz-linear-gradient(top, #3bed00, #3cee00);
+    background-image: -ms-linear-gradient(top, #3bed00, #3cee00);
+    background-image: -o-linear-gradient(top, #3bed00, #3cee00);
+    background-image: linear-gradient(to bottom, #3bed00, #3cee00);
+    text-decoration: none;
+}
+
 @media only screen and (min-width: 360px){
     .product-item {
+        position: relative;
         width: 48%;
         height: 420px;
         vertical-align: top;
