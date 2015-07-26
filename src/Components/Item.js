@@ -6,7 +6,7 @@ var _str = require('underscore.string');
 
 var {productsStore, productsActions} = require('../Stores/productsStore');
 var Gallery = require('./Gallery');
-require('../css/product-item.css');
+//require('../css/product-item.css');
 
 var Item = React.createClass({
     propTypes: {
@@ -41,14 +41,24 @@ var Item = React.createClass({
         return (
             <li className="product-item">
                 <Gallery gallery={this.props.gallery}/>
-                <a href="#" className="product-title">{_str.truncate(product.title, 20)}</a>
-                <span className="description">{_str.truncate(product.description, 70)}</span>
-                <div className="item-select-container">
-                    <input type="number" defaultValue="1" value={valueInSelect}
-                        min="0" max={balance} onChange={this.handleChange}/>
-                    <span>{product.price}</span>
-                    <button className={balance == 0 ? 'disable' : null}
-                        onClick={this.addTobasket}>Add</button>
+                <div className="product-description-block">
+                    <div className="product-title">
+                        <a href="#">{_str.truncate(product.title, 20)}</a>
+                    </div>
+
+                    <div className="product-description">{_str.truncate(product.description, 70)}</div>
+
+                    <div className="item-select-container">
+                        <input type="number" defaultValue="1" value={valueInSelect}
+                            className="item-input"
+                            min="0" max={balance} onChange={this.handleChange}/>
+                        <div className="price-container">
+                            <span className={balance == 0 ? 'product-price-disable' : "product-price btn"}>$ {product.price}</span>
+                            <span className={balance == 0 ? 'add-to-basket-disable' : "add-to-basket btn"}
+                                onClick={this.addTobasket}>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </li>
         );
