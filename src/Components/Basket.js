@@ -59,12 +59,16 @@ var Basket = React.createClass({
         var basketCount = this.getItemsCountInBasket() || null;
         var totalPrice = this.getTotalPrice() ?
             <li className="basket-item total-price">
-                {this.getTotalPrice().toFixed(2)}
+                $ {this.getTotalPrice().toFixed(2)}
             </li> :
             null;
         return (
             <div className="basket-container">
-                <div className="basket-header">Shopping basket {basketCount}</div>
+                <div className="basket-header">
+                    Shopping basket
+                    <span className="basket-count">{basketCount}</span>
+                    <div className="basket-icon"></div>
+                </div>
                 <ul>
                     {this.getItems()}
                     {totalPrice}

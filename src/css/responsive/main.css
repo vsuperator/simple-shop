@@ -80,7 +80,8 @@ img {
 }
 
 .basket-header {
-    padding: 20px;
+    position: relative;
+    padding: 30px;
 }
 
 .basket-item {
@@ -91,7 +92,7 @@ img {
 
 .basket-item-title {
     width: 100%;
-    padding-right: 83px;
+    padding-right: 90px;
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
@@ -110,6 +111,27 @@ img {
 
 .item-input {
     margin-top: 11px;
+}
+
+.basket-icon {
+    background: url(../../../images/shopping_basket.png) no-repeat center;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    display: inline-block;
+    position: absolute;
+    top: 16px;
+    left: 140px;
+}
+
+.basket-count {
+    border-radius: 50%;
+    padding: 6px 10px;
+    top: 1px;
+    left: 156px;
+    color: #FFFFFF;
+    position: absolute;
+    background: #26a200;
 }
 
 .add-to-basket {
@@ -176,7 +198,11 @@ img {
     border-left: 1px solid #FFFFFF;
 }
 
-@media only screen and (min-width: 360px){
+.total-price {
+    text-align: right;
+}
+
+@media only screen and (min-width: 400px){
     .product-item {
         position: relative;
         width: 48%;
@@ -189,7 +215,7 @@ img {
     }
 }
 
-@media only screen and (min-width: 600px){
+@media only screen and (min-width: 768px){
     .items-container {
         float: left;
         width: 70%;
