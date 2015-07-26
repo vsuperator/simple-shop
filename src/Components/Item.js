@@ -53,7 +53,7 @@ var Item = React.createClass({
                             className="item-input"
                             min="0" max={balance} onChange={this.handleChange}/>
                         <div className="price-container">
-                            <span className={balance == 0 ? 'product-price-disable' : "product-price btn"}>{product.price}</span>
+                            <span className={balance == 0 ? 'product-price-disable' : "product-price btn"}>$ {product.price}</span>
                             <span className={balance == 0 ? 'add-to-basket-disable' : "add-to-basket btn"}
                                 onClick={this.addTobasket}>
                             </span>

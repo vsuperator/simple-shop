@@ -127,6 +127,8 @@ img {
 }
 
 .product-price {
+    text-align: center;
+    min-width: 95px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     display: inline-block;
@@ -157,7 +159,7 @@ img {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     display: inline-block;
-    background: #e3e3e3;
+    background: rgb(177, 175, 175);
     font-family: Arial;
     color: #ffffff;
     font-size: 18px;
@@ -166,7 +168,7 @@ img {
 }
 
 .add-to-basket-disable {
-    background: url(../../../images/add_to_basket.png) no-repeat center #e3e3e3;
+    background: url(../../../images/add_to_basket.png) no-repeat center rgb(177, 175, 175);
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     color: #FFFFFF;
