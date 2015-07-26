@@ -38,7 +38,7 @@ img {
 
 .product-item {
     width: 100%;
-    max-height: 520px;
+    /*max-height: 520px;*/
     position: relative;
     border: 1px solid #c9c9c9;
     display: inline-block;
@@ -58,7 +58,7 @@ img {
 }
 
 .product-description {
-    padding: 0 15px;
+    padding: 0 15px 10px 15px;
 }
 
 .item-select-container {
@@ -202,11 +202,15 @@ img {
     text-align: right;
 }
 
+.gallery-container {
+    margin-bottom: 10px;
+}
+
 @media only screen and (min-width: 400px){
     .product-item {
         position: relative;
         width: 48%;
-        height: 420px;
+        /*height: 420px;*/
         vertical-align: top;
         margin-right: 4%;
     }

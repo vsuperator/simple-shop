@@ -45,7 +45,7 @@ var Item = React.createClass({
                         <a href="#">{_str.truncate(product.title, 20)}</a>
                     </div>
 
-                    <div className="product-description">{_str.truncate(product.description, 70)}</div>
+                    <div className="product-description">{product.description}</div>
 
                     <div className="item-select-container">
                         <input type="number" defaultValue="1" value={valueInSelect}
