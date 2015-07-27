@@ -65,7 +65,7 @@ var Basket = React.createClass({
             <div className="basket-container">
                 <div className="basket-header">
                     Shopping basket
-                    <span className="basket-count">{basketCount}</span>
+                    <span className={basketCount == null ? null : "basket-count"}>{basketCount}</span>
                     <div className="basket-icon"></div>
                 </div>
                 <ul>
